@@ -192,7 +192,7 @@ section {
             }
 
             & .active {
-                background-color: #d9d9d9;
+                background-color: #000000;
             }
         }
     }
@@ -200,10 +200,14 @@ section {
 }
 
 section {
+
     .list {
+        --calculation: 1;
+
         .item {
-            transform: translateX(100vw);
+            transform: translateX(calc(100vw * var(--calculation)));
             transition: transform 0.5s, opacity 0.5s;
+            opacity: 0;
 
             .car-img {
                 img {
@@ -214,42 +218,46 @@ section {
             }
 
             .content {
-                .car-information,
+
+                & .car-information,
                 h2,
                 .description,
                 .information {
-                    transform: translateX(200px);
-                    transition: transform 0.7s, opacity 0.7s;
+                    transform: translateX(calc(200px * var(--calculation)));
+                    transition: 0.7s;
                     transition-delay: 0.3s;
                     opacity: 0;
                 }
 
-                h2 {
+                & h2 {
                     transition-delay: 0.5s;
                 }
 
-                .description {
+                & .description {
                     transition-delay: 0.7s;
                 }
 
-                .information {
+                & .information {
                     transition-delay: 0.9s;
                 }
             }
         }
 
-        .item.active {
+        .active {
             transform: translateX(0);
+            transition: transform 0.5s, opacity 0.5s;
             opacity: 1;
 
             .car-img {
+
                 img {
                     transform: rotate(-20deg);
                 }
             }
 
             .content {
-                .car-information,
+
+                & .car-information,
                 h2,
                 .description,
                 .information {
